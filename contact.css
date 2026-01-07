@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
 .navbar {
     position: fixed;
     top: 0;
@@ -30,6 +45,7 @@
 
 .navbar ul {
     display: flex;
+    position: relative;
 }
 
 .navbar ul li {
@@ -40,10 +56,261 @@
 .navbar ul li a {
     font-size: 20px;
     font-weight: 500;
-    transition: 0.5s;
+    transition: color .18s ease, transform .12s ease;
 }
 
-.navbar ul li:hover a,
-.navbar ul li .active a {
+.navbar ul li a:hover,
+.navbar ul li a:focus {
     color: #7cf03d;
+}
+
+.navbar ul li.active a {
+    color: #7cf03d;
+}
+
+.navbar ul .nav-indicator {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg,#7cf03d,#5ee0ff);
+    border-radius: 4px;
+    transition: left .22s cubic-bezier(.2,.9,.2,1), width .22s cubic-bezier(.2,.9,.2,1), opacity .12s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a:focus {
+    transform: translateY(-2px);
+}
+
+.bars-animation{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: -1;
+}
+
+.bars-animation .bar{
+    width: 100%;
+    height: 100%;
+    background: #1f242d;
+    transform: translateY(-100%);
+    animation: show-bars 0.5s ease-in-out forwards;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes show-bars {
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+.contact-form {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    color: #fff;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.contact-form h2 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.contact-form form {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-form label {
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.03);
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #7cf03d;
+    box-shadow: 0 0 0 4px rgba(124,240,61,0.08);
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-form button {
+    align-self: flex-end;
+    background: linear-gradient(90deg,#7cf03d,#5ee0ff);
+    color: #0e1117;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.contact-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+.success-message {
+    margin-top: 12px;
+    font-weight: 600;
+    color: #7cf03d;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity .3s ease, transform .3s ease;
+}
+
+.success-message.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: pop .28s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.success-message.error {
+    color: #ff6b6b;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Entrance animation */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pop {
+    from { transform: scale(.96); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+    10%, 90% { transform: translateX(-1px); }
+    20%, 80% { transform: translateX(2px); }
+    30%, 50%, 70% { transform: translateX(-4px); }
+    40%, 60% { transform: translateX(4px); }
+}
+
+@keyframes ripple {
+    from { transform: scale(0); opacity: .45; }
+    to { transform: scale(2.4); opacity: 0; }
+}
+
+.contact-form .stagger-el {
+    opacity: 0;
+    transform: translateY(12px);
+}
+
+.contact-form.play .stagger-el {
+    animation: fadeInUp .48s cubic-bezier(.22,.9,.3,1) both;
+    animation-delay: calc(var(--i, 1) * 0.08s);
+}
+
+/* small shake when validation fails */
+.contact-form.shake {
+    animation: shake .42s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Social links */
+.socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.social {
+    display: inline-flex;
+    width: 46px;
+    height: 46px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    color: #fff;
+    transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+}
+
+.social svg { width: 22px; height: 22px; display: block; }
+
+.social:hover,
+.social:focus {
+    transform: translateY(-6px) scale(1.02);
+    background: linear-gradient(90deg,#7cf03d,#5ee0ff);
+    color: #0e1117;
+    box-shadow: 0 10px 24px rgba(124,240,61,0.14);
+    outline: none;
+}
+
+.social:focus { box-shadow: 0 0 0 4px rgba(124,240,61,0.12); }
+
+/* Button micro-interactions */
+.contact-form button {
+    align-self: flex-end;
+    background: linear-gradient(90deg,#7cf03d,#5ee0ff);
+    color: #0e1117;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form button:active {
+    transform: translateY(1px) scale(.99);
+}
+
+.contact-form button.sent {
+    box-shadow: 0 12px 30px rgba(124,240,61,0.18);
+    transform: translateY(-4px) scale(1.02);
+}
+
+.contact-form button .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.28);
+    transform: scale(0);
+    pointer-events: none;
+    animation: ripple 560ms cubic-bezier(.22,.9,.3,1) forwards;
+}
+
+@media (max-width: 600px) {
+    .navbar ul li { margin-left: 15px; }
+    .navbar ul li a { font-size: 18px; }
+    .contact-form h2 { font-size: 24px; }
+    .contact-form button { width: 100%; align-self: stretch; }
 }

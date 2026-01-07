@@ -7,6 +7,12 @@
     font-family: 'Poppins', sans-serif;
 }
 
+/* Page background so navbar (white text) is visible across pages */
+body {
+    background: #0e1117;
+    color: #fff;
+}
+
 
 a {
     text-decoration: none;
@@ -45,6 +51,7 @@ a {
 
 .navbar ul {
     display: flex;
+    position: relative; /* for moving indicator */
 }
 
 .navbar ul li {
@@ -55,12 +62,36 @@ a {
 .navbar ul li a {
     font-size: 20px;
     font-weight: 500;
-    transition: 0.5s;
+    transition: color .18s ease, transform .12s ease;
 }
 
-.navbar ul li:hover a,
-.navbar ul li .active a {
+.navbar ul li a:hover,
+.navbar ul li a:focus {
     color: #7cf03d;
+}
+
+.navbar ul li.active a {
+    color: #7cf03d;
+}
+
+/* Moving indicator under hovered/active nav item */
+.navbar ul .nav-indicator {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: linear-gradient(90deg,#7cf03d,#5ee0ff);
+    border-radius: 4px;
+    transition: left .22s cubic-bezier(.2,.9,.2,1), width .22s cubic-bezier(.2,.9,.2,1), opacity .12s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* keep nav items slightly lifting on hover for a tactile feel */
+.navbar ul li a:hover,
+.navbar ul li a:focus {
+    transform: translateY(-2px);
 }
 
 .home {

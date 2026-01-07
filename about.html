@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
+    <link rel="stylesheet" href="about.css">
 </head>
 <body>
       <nav class="navbar">
@@ -24,6 +25,56 @@
       <div class="bar" style="--i:2"></div>
       <div class="bar" style="--i:1"></div>
     </div>
+
+    <main class="about-section">
+        <h2 class="about-heading">About Me</h2>
+        <p>Hi — I’m <strong>Deepanshu Aggarwal</strong>. I’m a passionate web developer who enjoys creating interactive, user-friendly websites. I completed my B.Tech in Computer Science and Engineering from Jawaharlal Nehru University. I have a strong foundation in <strong>HTML, CSS, JavaScript, and React</strong>, and experience with <strong>Node.js</strong> and <strong>Express.js</strong>. I’m also comfortable programming in <strong>C</strong> and <strong>Python</strong>. I completed my schooling at R.P.S. Public School and scored <strong>98.11 percentile</strong> in the JEE Main examination.</p>
+
+        <h3 class="skills-heading">Skills</h3>
+        <ul class="skill-list" role="list">
+            <li tabindex="0" role="listitem" data-tooltip="Building responsive, accessible UIs">
+                <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 18l6-6-6-6M8 6L2 12l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <span class="skill-text"><strong>Frontend:</strong> HTML, CSS, JavaScript, React</span>
+            </li>
+            <li tabindex="0" role="listitem" data-tooltip="APIs and server-side development">
+                <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="10" width="18" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="16" width="10" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+                </span>
+                <span class="skill-text"><strong>Backend:</strong> Node.js, Express.js</span>
+            </li>
+            <li tabindex="0" role="listitem" data-tooltip="Problem solving & scripting">
+                <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 9h8M8 13h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+                </span>
+                <span class="skill-text"><strong>Languages:</strong> C, Python</span>
+            </li>
+            <li tabindex="0" role="listitem" data-tooltip="Git workflows and efficient editor setup">
+                <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.7 13.35c.04-.35.06-.71.06-1.07 0-.36-.02-.72-.06-1.07l2.02-1.58a.5.5 0 00.12-.64l-1.92-3.32a.5.5 0 00-.6-.22l-2.38.95a7.01 7.01 0 00-1.84-1.07l-.36-2.5A.5.5 0 0014.2 2h-4.4a.5.5 0 00-.49.42l-.36 2.5c-.64.27-1.24.64-1.79 1.07l-2.38-.95a.5.5 0 00-.6.22L1.2 9.64a.5.5 0 00.12.64L3.34 11.9c-.04.35-.06.71-.06 1.07 0 .36.02.72.06 1.07L1.26 15.62a.5.5 0 00-.12.64l1.92 3.32c.14.24.43.34.68.22l2.38-.95c.55.43 1.15.8 1.79 1.07l.36 2.5c.05.27.28.48.56.48h4.4c.28 0 .51-.21.56-.48l.36-2.5c.64-.27 1.24-.64 1.84-1.07l2.38.95c.25.12.54.02.68-.22l1.92-3.32a.5.5 0 00-.12-.64l-2.02-1.58z" stroke="currentColor" stroke-width="0.9"/></svg>
+                </span>
+                <span class="skill-text"><strong>Tools:</strong> Git, VS Code</span>
+            </li>
+        </ul>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const section = document.querySelector('.about-section');
+  if (!section) return;
+  const els = [section.querySelector('.about-heading')]
+    .concat(Array.from(section.querySelectorAll('p, .skills-heading, .skill-list li')))
+    .filter(Boolean);
+  els.forEach((el, idx) => {
+    el.classList.add('stagger-el');
+    el.style.setProperty('--i', idx + 1);
+  });
+  // Delay so navbar animation finishes (approx 2800ms)
+  setTimeout(() => section.classList.add('play'), 2800);
+});
+</script>
+<script src="nav.js"></script>
 
 </body>
 </html>
