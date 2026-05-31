@@ -1,11 +1,13 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "Personal Portfolio with Vercel Speed Insights",
+  "description": "Personal Portfolio with Vercel Speed Insights and Web Analytics",
   "main": "contact.js",
   "type": "module",
   "scripts": {
-    "build": "esbuild speed-insights.js --bundle --format=iife --outfile=dist/speed-insights.min.js --minify",
+    "build": "npm run build:speed-insights && npm run build:analytics",
+    "build:speed-insights": "esbuild speed-insights.js --bundle --format=iife --outfile=dist/speed-insights.min.js --minify",
+    "build:analytics": "esbuild web-analytics.js --bundle --format=iife --outfile=dist/web-analytics.min.js --minify",
     "test": "echo \"No tests specified\" && exit 0"
   },
   "repository": {
@@ -15,7 +17,8 @@
   "keywords": [
     "portfolio",
     "vercel",
-    "speed-insights"
+    "speed-insights",
+    "web-analytics"
   ],
   "author": "Deepanshu Aggarwal",
   "license": "ISC",
@@ -24,6 +27,7 @@
   },
   "homepage": "https://github.com/deepanshu12311/newPortfolio#readme",
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0"
   },
   "devDependencies": {
